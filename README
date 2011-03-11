@@ -1,0 +1,17 @@
+//
+// Contents
+//
+
+A steganography GUI for Java
+
+
+//
+// Building and Running javasteg
+//
+
+Javasteg is built with Apache Ant.  Once ant is installed just go to the java steg
+directory and run the ant command:
+
+        ant
+        
+Once the application is built you can run it...

@@ -1,0 +1,76 @@
+<project name="stegsample" default="dist" basedir=".">
+    <description>
+        Load Test Example
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+    
+    <condition property="shouldGenerateKey">
+        <and>
+            <available file="stegtest"/>
+        </and>
+    </condition>
+  </target>
+  
+  <target name="generatekeystore" unless="shouldGenerateKey">
+        <!-- In addition to compiling the Java files and building the archives
+             we also need to generate a keystore and sign the JAR file.
+        -->
+        <genkey alias="stegtest" storepass="stegtest" keystore="stegtest">
+            <dname>
+                <param name="CN" value="StegTest"/>
+                <param name="OU" value="StegTest"/>
+                <param name="O"  value="StegTest"/>
+                <param name="C"  value="US"/>
+            </dname>
+        </genkey>
+    </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" target="1.5" source="1.5" debug="true"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+
+    <mkdir dir="${dist}"/>
+
+    <delete file="${dist}/stegtest.jar" />
+    <jar jarfile="${dist}/stegtest.jar"
+         manifest="${src}/stegtest/manifest.mf">
+        <zipfileset dir="${build}/stegtest"
+                prefix="stegtest" />
+    </jar>
+      
+    <!-- Create the key store to sign the JAR with.  This is needed for 
+         Java Web Start -->
+    <antcall target="generatekeystore" />
+    
+    <!-- Sign the JAR file.  This will generate the
+             gotd.jar file.
+        -->
+        <signjar alias="stegtest"
+                 storepass="stegtest"
+                 keystore="stegtest"
+                 preservelastmodified="true"
+                 jar="${dist}/stegtest.jar"
+                 signedjar="${dist}/stegtest_signed.jar" />
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

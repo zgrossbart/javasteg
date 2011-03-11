@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  JNLP File for StegTest
+-->
+
+<jnlp codebase="http://www.zackgrossbart.com/extras/stegtest" href="stegtest.jnlp">
+  <information>
+    <title>Stegonography Test</title>
+    <vendor>Open Source</vendor>
+    <homepage href="http://www.zackgrossbart.com/hackito/secret-secret/"/>
+    <description>Zack Grossbart's stegonography example version 1.0</description>
+    <description kind="short">Zack Grossbart's stegonography example version 1.0.</description>
+    <icon href="stegtest.gif"/>
+    <offline-allowed/>
+    <shortcut online="true">
+      <desktop/>
+      <menu submenu="StegTest"/>
+    </shortcut>
+  </information>
+  <security>
+    <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.6 1.5+" max-heap-size="150m"/>
+    <jar href="stegtest_signed.jar" main="true"/>
+  </resources>
+  <application-desc/>
+</jnlp>
