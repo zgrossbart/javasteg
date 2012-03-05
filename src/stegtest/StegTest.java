@@ -597,8 +597,6 @@ public class StegTest extends JPanel implements ActionListener
             file = file + ".png";
         }
         
-        System.out.println("file: " + file);
-
         File f = new File(dialog.getDirectory(), file);
         
         /*
