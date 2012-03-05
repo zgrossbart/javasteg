@@ -582,7 +582,7 @@ public class StegTest extends JPanel implements ActionListener
         dialog.setVisible(true);
 
         String file = dialog.getFile();
-
+        
         if (file == null) {
             /*
              * This means they cancelled.
@@ -596,8 +596,10 @@ public class StegTest extends JPanel implements ActionListener
         if (!file.endsWith(".png")) {
             file = file + ".png";
         }
+        
+        System.out.println("file: " + file);
 
-        File f = new File(file);
+        File f = new File(dialog.getDirectory(), file);
         
         /*
          * This is the buffered image we will use to draw our image with the encoded message.  Up to 
