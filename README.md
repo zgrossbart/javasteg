@@ -9,7 +9,7 @@ These changes come all together in the image to encode the message you have.
 
 ![Encoded pixels highlighted](/zgrossbart/javasteg/raw/master/blue_pix.jpg)
 
-Find out more at [How To Keep a Secret Secret](http://www.zackgrossbart.com/hackito/secret-secret).
+Find out more and run this code online at [How To Keep a Secret Secret](http://www.zackgrossbart.com/hackito/secret-secret).
 
 
 Building and Running javasteg
