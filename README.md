@@ -5,7 +5,7 @@ This little Java program hides secret messages in images by making subtle change
 
 ![Pixels](https://raw.github.com/zgrossbart/javasteg/master/pixels.gif)
 
-These changes come all together in the image to encode the message you have.
+These changes all combine to encode your secret message in any random image.
 
 ![Encoded pixels highlighted](https://raw.github.com/zgrossbart/javasteg/master/blue_pix.jpg)
 
